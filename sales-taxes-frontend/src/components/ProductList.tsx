@@ -37,7 +37,13 @@ const ProductList: React.FC<IProductListProps> = ({ products }) => {
 
   return (
     <Row justify={"center"}>
-      <Table dataSource={products} columns={columns}></Table>
+      <Table
+        dataSource={products.map((product) => ({
+          ...product,
+          key: product.id,
+        }))}
+        columns={columns}
+      ></Table>
     </Row>
   );
 };
