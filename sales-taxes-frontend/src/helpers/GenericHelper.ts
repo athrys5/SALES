@@ -1,5 +1,6 @@
-import { BACKEND_APP_LOCALHOST } from "../constants/url";
 import { Methods } from "../enums/Enums";
+
+const BACKEND_APP_URL = process.env.REACT_APP_BACKEND_URL;
 
 const createRequestOptions = (method: Methods, body?: {}) => {
   const requestOptions: RequestInit = {
@@ -18,7 +19,7 @@ const createRequestOptions = (method: Methods, body?: {}) => {
 
 const createRequest = (url: string, method: Methods, body?: {}) => {
   const requestOptions = createRequestOptions(method, body);
-  return fetch(BACKEND_APP_LOCALHOST + url, requestOptions);
+  return fetch(BACKEND_APP_URL + url, requestOptions);
 };
 
 export { createRequest };

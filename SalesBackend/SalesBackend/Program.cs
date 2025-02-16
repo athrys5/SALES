@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SalesBackend.Data;
 using SalesBackend.Services;
 
@@ -15,18 +16,19 @@ namespace SalesBackend
                 options.AddPolicy("AllowSpecificOrigin",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000") 
+                        builder.WithOrigins("http://localhost:3000")
                                .AllowAnyHeader()
                                .AllowAnyMethod();
                     });
             });
 
-            
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<SalesTaxesContext>();
+
+            builder.Services.AddDbContext<SalesTaxesContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             builder.Services.AddScoped<TaxCalculator>();
 
             var app = builder.Build();
@@ -42,10 +44,6 @@ namespace SalesBackend
             }
 
             app.UseHttpsRedirection();
-
-            //app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();
