@@ -1,0 +1,39 @@
+:root {
+  --shadow: #d3d3d3;
+}
+.d-flex {
+  display: flex !important;
+}
+.justify-center {
+  justify-content: center !important;
+}
+.justify-between {
+  justify-content: space-between !important;
+}
+.align-center {
+  align-items: center !important;
+}
+.standard-icon {
+  cursor: pointer;
+}
+.pa {
+  padding: 8px;
+}
+.general-row-card {
+  width: 50%;
+  justify-self: center;
+  border: 1px transparent solid;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px 2px var(--shadow);
+  box-sizing: border-box;
+}
+.select-id {
+  width: 100%;
+}
+.cart-item {
+  box-sizing: border-box;
+  box-shadow: 2px 2px 2px 2px var(--shadow);
+  border-radius: 1rem;
+  padding: 8px;
+  margin-top: 12px;
+}
